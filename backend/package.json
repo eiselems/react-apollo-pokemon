@@ -16,6 +16,7 @@
   "homepage": "https://github.com/eiselems/react-apollo-pokemon#readme",
   "dependencies": {
     "apollo-server": "^3.3.0",
+    "apollo-server-types": "^3.2.0",
     "graphql": "^15.5.3"
   },
   "scripts": {
