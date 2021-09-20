@@ -1,0 +1,10 @@
+type Pokemon {
+  id: Int!
+  name: String!
+  img: String!
+}
+
+type Query {
+  getAllPokemon: [Pokemon]
+  getPokemonDetail(id: Int): Pokemon
+}

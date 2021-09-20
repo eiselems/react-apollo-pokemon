@@ -1,14 +1,12 @@
-const ServiceResolvers = {
-    Query: {
-      getAllPokemon: async (_: any, args: any) => {
-        try {
-          const mockPokemon = [{ id: 1, name: "Bulbasaur" }, { id: 2, name: "Ivysaur" }];
-          return mockPokemon;
-        } catch (error) {
-          //TODO: throw
-        }
-      },
-    },
-  };
-  
-  export default ServiceResolvers;
+//TODO: move to database
+const pokemons = [
+  { id: 1, name: "Bulbasaur" },
+  { id: 2, name: "Ivysaur" },
+];
+
+module.exports = {
+  Query: {
+    getAllPokemon: (_: any, __: any, {dataSources}:{dataSources: any}) => dataSources.pokemonAPI.getAllPokemons(),
+    getPokemonDetail: (_: any, { id }: { id: number }) => pokemons[id - 1],
+  }
+};

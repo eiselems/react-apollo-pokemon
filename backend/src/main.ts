@@ -1,12 +1,18 @@
 import { ApolloServer } from "apollo-server";
 
 import { environment } from "./env";
-import resolvers from "./resolvers";
-import typeDefs from "./type-defs";
+import * as typeDefs from './type-defs.graphql';
+
+const resolvers = require('./resolvers');
+const PokemonAPI = require('./datasources/pokemon');
+
 
 const server = new ApolloServer({
   resolvers,
   typeDefs,
+  dataSources: () => ({
+    pokemonAPI: new PokemonAPI(),
+  }),
   introspection: environment.apollo.introspection
 });
 
